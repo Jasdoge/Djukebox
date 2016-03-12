@@ -33,10 +33,17 @@ var Audio = function(){};
 		
 		// Takes a soundcloud permanent url and sets it to the current url
 		this.setSoundBySoundcloud = function(url){
+			this.getSoundBySoundcloud(url, function(sound){me.setSound(sound.stream_url+"?client_id="+Audio.client_id);});
+		};
+		
+		this.getSoundBySoundcloud = function(url, onSuccess){
 			SC.get("/resolve/?url="+encodeURIComponent(url), {}, function(sound){
-				me.setSound(sound.stream_url+"?client_id="+Audio.client_id);
+				if(onSuccess !== undefined){
+					onSuccess.apply(me, [sound]);
+				}
 			});
 		};
+		
 		
 		this.setSound = function(url){
 			this.container.src = url;
@@ -50,7 +57,8 @@ var Audio = function(){};
 			this.container.pause();
 		};
 		
-		this.play = function(){
+		this.play = function(volume){
+			this.container.volume = (volume === undefined ? 1 : +volume);
 			this.container.play();
 			if(this._progress_speed > 0 && this.onProgress !== null){
 				if(this._interval_progress !== null){clearInterval(this._interval_progress);}

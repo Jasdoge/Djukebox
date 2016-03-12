@@ -6,8 +6,9 @@
 
 // Song object
 var Song = function(data){
+	"use strict";
+	
 	// Set by PHP
-	var me = this;
 	this.id = 0;
 	this.author = "";
 	this.title = "";
@@ -15,38 +16,81 @@ var Song = function(data){
 	this.wallet_dogecoin = "";
 	this.wallet_bitcoin = "";
 	this.wallet_litecoin = "";
-
-
+	this.cost_btc = 0.0;
+	this.cost_doge = 0;
+	this.cost_ltc = 0.0;
+	this.proper = false;
 
 	// Set by JS/localstorage
 	this.lastPlayed = 0;		// Last time this track was played
-	this.tips = function(){		// Gets total pending tips from transactions
-		var out = 0;
-		for(var i in this.transactions){if(true){
-			out+= +this.transactions[i];
-		}}
-		return out;
-	};							// Tips since last played
 	this.playing = false;
-	
-	
-	this.transactions = {};		// txid : amountReceived
-	
-	
-	
+	this.transactions = {};
+	this.transactions[Song.BLOCKCHAIN_DOGE] = {};
+	this.transactions[Song.BLOCKCHAIN_LTC] = {};
+	this.transactions[Song.BLOCKCHAIN_BTC] = {};
+
 	// set by Jukebox
 	this.j_container = null;	// CreateJS container
-	
-	
 	
 	this.__construct = function(data){
 		for(var i in data){
 			if(this.hasOwnProperty(i)){
 				this[i] = data[i];
 			}
-		}
+		}		
 		return this;
 	};
+
+	this.tips = function(blockchain){		// Gets total pending tips from transactions
+		var out = 0;
+		for(var i in this.transactions[blockchain]){if(true){
+			out+= +this.transactions[blockchain][i];
+		}}
+		return out;
+	};							// Tips since last played
+
+	// Returns a total value in bitcoin of current tips
+	this.totalTips = function(){
+		// Player.dogeValue Player.ltcValue
+		return 	this.tips(Song.BLOCKCHAIN_BTC)+
+				this.tips(Song.BLOCKCHAIN_DOGE)/Player.dogeValue+
+				this.tips(Song.BLOCKCHAIN_DOGE)/Player.ltcValue;
+	};
+
+	this.chainToCost = function(blockchain){
+		if(blockchain === Song.BLOCKCHAIN_BTC){return this.cost_btc;}
+		else if(blockchain === Song.BLOCKCHAIN_LTC){return this.cost_ltc;}
+		return this.cost_doge;
+	};
+	
+	// Tipped enough to play
+	this.tippedEnough = function(){
+		var chains = [Song.BLOCKCHAIN_DOGE, Song.BLOCKCHAIN_BTC, Song.BLOCKCHAIN_LTC];
+		for(var i = 0; i<chains.length; i++){
+			var blockchain = chains[i];
+			var received = this.tips(blockchain);
+			var cost = this.chainToCost(blockchain);
+			if(
+				(received>=cost && cost > 0) ||
+				(received && cost <= 0)
+			){
+				return true;
+			}
+		}
+		return false;
+	};
+	
+	// Returns true if this was a new addition
+	this.handleTip = function(txid, amount, blockchain){
+		if(this.transactions[blockchain].hasOwnProperty(txid)){return false;}
+		this.transactions[blockchain][txid] = amount;
+		this.save();
+		return true;
+	};
+	
+	
+	
+	
 		
 	// Events
 	this.onPlayStart = function(){
@@ -54,6 +98,11 @@ var Song = function(data){
 		this.playing = true;
 		this.lastPlayed = Date.now();
 		return this;
+	};
+	
+	// Saves into localstorage
+	this.save = function(){
+		Player.ls.saveTrack(this);
 	};
 		
 	this.onPlayFinish = function(){
@@ -68,10 +117,14 @@ var Song = function(data){
 	return this.__construct(data);
 };
 
-
 // Static
 (function(){
 	"use strict";
+	
+	Song.BLOCKCHAIN_DOGE = 'DOGE';
+	Song.BLOCKCHAIN_BTC = 'BTC';
+	Song.BLOCKCHAIN_LTC = 'LTC';
+	
 	Song.playlist = [];			// Contains all song objects
 	Song.add = function(data){	// Adds to the above list
 		var s = new Song(data);

@@ -28,7 +28,7 @@ div{
 
 #centerMe{
 	display:inline-block;
-	
+	max-width:95%;
 }
  
 #noticediv, #errordiv{
@@ -250,8 +250,15 @@ div.editBox{
 	color:#000;
 	max-width:50em;
 }
+div.editBox.editSong.editor.red{
+	background:#F99;
+}
 
-div.editBox input[type=text]{
+div.editBox input.cost{
+	width:5em; padding-left:0px; padding-right:0px;
+}
+
+div.editBox input[type=text],div.editBox input[type=number]{
 	padding:5px;
 	margin:5px;
 	font-size:1.5em;
@@ -262,6 +269,17 @@ div.editBox input[type=text]{
 	text-align:center;
 	
 }
+div.editBox form input[type=text].red{
+	background-color:#F99;
+}
+div.editBox form input[type=text].green{
+	background-color:#9F9;
+}
+div.editBox form input[type=text].yellow{
+	background-color:#FD9;
+}
+
+
 div.editBox.editSong input[type=text]{
 	background-color:#EFE;
 }
@@ -285,7 +303,6 @@ div.editBox input[type=text].ltc{
 div.editBox input[type=text].btc{
 	background-color:#EEF; 
 }
- 
 
 
 
@@ -322,14 +339,15 @@ div.editBox a.payButton{
 	border-radius:10px;
 	color:#000;
 	font-weight:bold;
-	font-size:1.5em;
+	font-size:1.25em;
 	text-decoration:none;
 	margin:10px 0px;
 	position:relative;
-	padding:1em 2em 1em 4em;
-	min-width:10em;
+	padding:1em 1em 1em 2em;
 	border:3px solid #FFF;
 	transition:all 0.5s cubic-bezier(.32,.59,.55,1.16);
+	box-sizing:border-box;
+	width:90%;
 }
 div.editBox a.payButton:active{
 	box-shadow:0px 0px 9px #000;
@@ -353,13 +371,36 @@ div.editBox a.payButton img{
 	vertical-align:middle;
 	margin-right:5px;
 	position:absolute;
-	left:-2.5em;
+	left:-1.5em;
 	top:50%;
 	transform:translateY(-50%);
 }
 
 .noclick{
 	cursor:none;
+}
+
+
+#qrBottom{
+	position:fixed;
+	top:2%; right:2%;
+	padding:3px;
+	border:3px solid #FFF;
+	border-radius:15px;
+	background:rgba(255,255,255,.75);
+}
+
+@keyframes qrBottom_h2{
+	from{transform:rotate(-5deg) scale(1.05,1.05);}
+	to{transform:rotate(-5deg)  scale(1,1);}
+}
+#qrBottom h2{
+	position:absolute;
+	bottom:-2.3em;
+	right:-0.5em; 
+	font-size:1em;
+	transform:rotate(-3deg);	
+	animation:qrBottom_h2 alternate ease-in-out 2s infinite;
 }
 
 

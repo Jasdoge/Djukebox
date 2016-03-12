@@ -12,10 +12,12 @@ $(function(){
 	Audio.init("0c5e06eef479dec10a30e3bb4bb027dd");
 	var widget = new Audio();
 	
-	
 	// Here we can configure some things
 	Player.location = <?php echo json_encode(Config::$STORE_NAME); ?>;
-		
+	Player.blockio_doge = <?php echo json_encode(Config::$BLOCKIO_DOGE); ?>;
+	Player.blockio_btc = <?php echo json_encode(Config::$BLOCKIO_BTC); ?>;
+	Player.blockio_ltc = <?php echo json_encode(Config::$BLOCKIO_LTC); ?>;
+	
 	
 	// Grab the songs
 	Song.init(function(){
@@ -34,6 +36,17 @@ $(function(){
 		
 	});
 	
+	
+	var url = window.location.protocol + "//" + window.location.host;
+	
+	// Insert the QR code
+	var qr = $("<canvas width=128 height=128 />").qrcode({
+		size:128,
+		color:"#000",
+		text:url
+	});
+	$("#qrBottom div.qrWrap").append(qr);
+	
 });
 </script>
 <div id="content" class="noclick" style="overflow:hidden;">
@@ -51,7 +64,7 @@ $(function(){
         </div>
         <div id="songList"></div>
     </div>
-   
+   	<div id="qrBottom"><h2>Scan to pick a song!</h2><div class="qrWrap"></div></div>
     <div id="infoBox" class="boxGeneric"></div>
 </div>
 <div id="console">

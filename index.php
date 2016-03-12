@@ -13,18 +13,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="/scripts/ajax3.js.php"></script>
 <script>
+var Tools = {
+	ini :function(){
+		$("#errordiv, #noticediv").click(function(){$(this).html("").toggleClass("hidden", true);});
+	},
+	addErrors:function(text, isNotice){
+		var targ = "#errordiv"
+		if(!isNotice){
+			targ = "#noticediv";
+		}
+		$(targ).append(text).toggleClass("hidden", false);
+	}
+};
+
+
 $(function(){
+	
 	Ajax.bindErrorOverride(function(errors, notices){
 		if(errors.length){
-			$("#errordiv").append(errors.join("<br />")+"<br />").toggleClass("hidden", false);
+			Tools.addErrors(errors.join("<br />")+"<br />", true);
 		}
 		if(notices.length){
-			$("#noticediv").append(notices.join("<br />")+"<br />").toggleClass("hidden", false);
+			Tools.addErrors(notices.join("<br />")+"<br />", true);
 		}
 	});
 	
-	$("#errordiv, #noticediv").click(function(){$(this).html("").toggleClass("hidden", true);});
-	
+	Tools.ini();
 });
 </script>
 <link rel="stylesheet" href="/style.css" />

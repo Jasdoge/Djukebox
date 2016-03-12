@@ -52,10 +52,12 @@ var Jukebox = {};
 		var nr = 0;
 		for(var i = 0; i<Song.playlist.length; i++){
 			var container = J.songContainer(Song.playlist[i]);
-			if(i<8 && Song.playlist[i].tips()>0 && !Song.playlist[i].playing){
+			if(nr<8 && !Song.playlist[i].playing && Song.playlist[i].tippedEnough()){
 				nr++;
-				container.find("span.order:first").html(nr+".");
-				$("#songList > div:nth-child(" + i + ")").before(container);
+				// Set the nr
+				container.find("span.order:first").html(nr+".").toggleClass("hidden", false);
+				// Find the first child
+				$("#songList > div:nth-child(" + nr + ")").before(container);
 			}else{
 				container.toggleClass("hidden", true);
 			}
@@ -66,7 +68,7 @@ var Jukebox = {};
 	// Returns a song DOM element, creates it if it doens't exist
 	J.songContainer = function(song){
 		var container = song.j_container;
-		var is_tipped = (song.tips() > 0);
+		var is_tipped = song.tippedEnough();
 		
 		// Create container if not exists
 		if(song.j_container === null){
