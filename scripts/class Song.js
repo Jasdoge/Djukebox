@@ -82,6 +82,7 @@ var Song = function(data){
 	
 	// Returns true if this was a new addition
 	this.handleTip = function(txid, amount, blockchain){
+		if(!this.transactions.hasOwnProperty(blockchain)){console.log("Blockchain not found!", blockchain); return false;}
 		if(this.transactions[blockchain].hasOwnProperty(txid)){return false;}
 		this.transactions[blockchain][txid] = amount;
 		this.save();
@@ -108,7 +109,11 @@ var Song = function(data){
 	this.onPlayFinish = function(){
 		// Only save last played once the track is finished in case of glitchy fuckery
 		this.playing = false;
-		this.transactions = {};				// Clear old transactions
+		
+		// Clear old transactions
+		this.transactions[Song.BLOCKCHAIN_DOGE] = {};				
+		this.transactions[Song.BLOCKCHAIN_BTC]	= {};
+		this.transactions[Song.BLOCKCHAIN_LTC] = {};
 		Player.ls.saveTrack(this);
 		return this;
 	};

@@ -18,7 +18,6 @@ $(function(){
 	Player.blockio_btc = <?php echo json_encode(Config::$BLOCKIO_BTC); ?>;
 	Player.blockio_ltc = <?php echo json_encode(Config::$BLOCKIO_LTC); ?>;
 	
-	
 	// Grab the songs
 	Song.init(function(){
 		// Initialize the player
@@ -37,7 +36,7 @@ $(function(){
 	});
 	
 	
-	var url = window.location.protocol + "//" + window.location.host;
+	var url = <?php echo json_encode(Config::$LIST_ADDRESS); ?>;
 	
 	// Insert the QR code
 	var qr = $("<canvas width=128 height=128 />").qrcode({

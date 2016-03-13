@@ -10,12 +10,13 @@ class Config{
 	
 	static $PDO = NULL;
 	
-	static $DEBUG = true;					// Enables/Disables non-localhost access to the editor. Make sure this is off in production
+	static $DEBUG = false;					// Enables/Disables non-localhost access to the editor. Make sure this is off in production
 	static $STORE_NAME = "Shibe Café";				// Store name
 	static $BLOCKIO_DOGE = "ffd0-84c9-5154-91cd";		// BlockIO API key - Doge
 	static $BLOCKIO_BTC = "2fab-7903-e588-36ce";		// BlockIO API key - Bitcoin
 	static $BLOCKIO_LTC = "0344-96ca-8652-7bb1";		// BlockIO API key - Litecoin
 	
+	static $LIST_ADDRESS = "https://jukebox.shibe.digital";		// Address to the listing. Should be set to the IP of the PI unless you have a webserver
 	
 	static $MYSQL_SERVER = "localhost";
 	static $MYSQL_USER = "jasdoge";
