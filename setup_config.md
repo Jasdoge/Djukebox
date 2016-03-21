@@ -1,4 +1,4 @@
-#h1 Configuring your Djukebox
+# Configuring your Djukebox
 
 Here's a quick way of setting things up. There are obviously lots of different ways of doing this, but I'll start with the easiest way possible:
 
@@ -26,13 +26,13 @@ In the editor you should hit new song. Currently the Djukebox only handles sound
 5. Click Done to save that track.
  
 
-#h3 But Mr Jasdoge, I don't have any dogecoin addresses :(
+### But Mr Jasdoge, I don't have any dogecoin addresses :(
 
 There are multiple ways to get some doge addresses! If you don't want to host a full dogecoin value I suggest using a [dogechain wallet](https://my.dogechain.info), it's what I've been using while testing.
 
 As for bitcoin/litecoin addresses I don't really know. I suspect there are similar services, but you will just have to use ye oldde google for that.
 
-#h2 Starting the Djukebox
+## Starting the Djukebox
 
 Now we have a PI with a lamp server. We have the Djukebox installed and we have added some songs. We have even made some fresh doge addresses just for our Djukebox. It's time to make some magic!
 
