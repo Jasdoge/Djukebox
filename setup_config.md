@@ -26,7 +26,7 @@ In the editor you should hit new song. Currently the Djukebox only handles sound
 5. Click Done to save that track.
  
 
-### But Mr Jasdoge, I don't have any dogecoin addresses :(
+### But Mr Jasdoge, I do not have any dogecoin addresses :(
 
 There are multiple ways to get some doge addresses! If you don't want to host a full dogecoin value I suggest using a [dogechain wallet](https://my.dogechain.info), it's what I've been using while testing.
 
