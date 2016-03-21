@@ -39,7 +39,7 @@ The Djukebox is basically just a website. You can easily host it on any server, 
 2. Once you're finished installing, enter: sudo apt-get install php5-fpm php5-mysql
 3. Once that's done installing enter: sudo apt-get install mysql-server
 4. You will have to pick a root password for mysql. Make sure to write that down.
-
+5. Wget was not included on my install so also run: sudo-apt-get install wget
 
 #h2 Configuring Software
 
@@ -70,11 +70,22 @@ The Djukebox is basically just a website. You can easily host it on any server, 
 8. Run: CREATE USER 'jasdoge'@'localhost' IDENTIFIED BY 'jasdoge';
 9. Run: GRANT ALL PRIVILEGES ON jasdoge . * TO 'jasdoge'@'localhost';
 10. Run: FLUSH_PRIVILEGES;
+11. Run: exit
 
 Sweet, now we got MYSQL set up. To make sure everything is in order we should run the following two commands:
 
 1. sudo service php5-fpm restart
 2. sudo service nginx restart
 
+We still need chromium to display it though. [Please follow this guide](https://www.raspberrypi.org/forums/viewtopic.php?t=121195).
+
 #h2 Setting up the Djukebox
+
+1. Run: git clone https://github.com/Jasdoge/Djukebox
+2. This will create a Djukebox folder in your home directory. We'll have to give www-data access to it though.
+3. Run: sudo chown -R pi:www-data Djukebox
+4. That will give www-data ownership of the directory. Now we just need to create a symlink:
+5. Run: sudo ln -s /home/pi/Djukebox /var/www/
+
+That should be it for basic installation. If you now open up chromium and enter the url: localhost, it should take you to the song editor. In the next tutorial I will go over how to add some songs and setting up the visuals for the Djukebox!
 
