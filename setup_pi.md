@@ -1,10 +1,10 @@
-#h1 Setting up your PI
+# Setting up your PI
 
 The Djukebox is basically just a website. You can easily host it on any server, I just picked a raspberry PI 3 with raspbian jessie because it was cheap and easy. This first part of the guide will install LEMP (webserver) and clone the Djukebox source code. I'll start this guide as if you have just bought a PI 3, an adaptor and a memory card. We'll start off on your personal desktop computer.
 
 You can obviously also use LAMP for this. If you already have/know how to install a webserver you can just clone the Djukebox repo into your webroot and get started on the second guide immediately.
 
-#h2 Preparing the memory card and hardware.
+## Preparing the memory card and hardware.
 
 1. I've downloaded the non-lite version of Raspbian Jessie from the raspberry pi's official site here: [https://www.raspberrypi.org/downloads/raspbian/](https://www.raspberrypi.org/downloads/raspbian/)
 2. Follow the instructions from [here](https://www.raspberrypi.org/documentation/installation/installing-images/) on how to set up the SD card.
@@ -13,7 +13,7 @@ You can obviously also use LAMP for this. If you already have/know how to instal
 
 If you're familiar with linux, you can disregard the monitor/keyboard/mouse if you can figure out the network ID for the PI and just SSH in with user: pi, password: raspberry.
 
-#h2 Configuring the pi
+## Configuring the pi
 
 1. Open a terminal.
 2. Enter: sudo raspi-config
@@ -21,12 +21,12 @@ If you're familiar with linux, you can disregard the monitor/keyboard/mouse if y
 4. Open a new terminal and enter again: sudo raspi-config
 5. Select change user password. Change your user password to something more secure. By default it's "raspberry"
 
-*Keeping it up to date*
+**Keeping it up to date**
 1. Enter a terminal and type: sudo apt-get update
 2. After that's finished downloading, enter: sudo apt-get upgrade
 3. This is going to take at least half an hour so go make yourself some pineapple wuffins.
 
-*Optional: Change keyboard layout*
+**Optional: Change keyboard layout**
 
 1. If you like me don't use an english layout keyboard you might want to install that. Enter raspi-config and select internationalisation options.
 2. Select change keyboard layout.
@@ -37,7 +37,7 @@ If you're familiar with linux, you can disregard the monitor/keyboard/mouse if y
 
 
 
-#h2 Installing software
+## Installing software
 
 1. Open a terminal, enter: sudo apt-get install nginx
 2. Once you're finished installing, enter: sudo apt-get install php5-fpm php5-mysql
@@ -45,13 +45,13 @@ If you're familiar with linux, you can disregard the monitor/keyboard/mouse if y
 4. You will have to pick a root password for mysql. Make sure to write that down.
 5. Wget was not included on my install so also run: sudo-apt-get install wget
 
-#h2 Configuring Software
+## Configuring Software
 
-*nginx*
+**nginx**
 
 1. Run: sudo nano /etc/php5/fpm/php.ini
 2. Find the line: cgi.fix_pathinfo=1 (You can use ctrl+w to search)
-3. Uncomment it by removing the ; in front, then change the =1 to =0 and hit ctrl+o and hit enter to save.
+3. Uncomment it by removing the ; in front, then change the =1 to =0 and hit ctrl+X, Y and enter to save and exit.
 4. Run: sudo nano /etc/nginx/sites-available/default
 5. Find the line "index index.html index.htm index.nginx-debian.html;" and add index.php to it like "index index.html index.php index.htm index.nginx-debian.html;"
 6. Find the line "root /var/www/html" and change it to "root /var/www/Djukebox"
@@ -60,9 +60,9 @@ If you're familiar with linux, you can disregard the monitor/keyboard/mouse if y
   * include snippets/fastcgi-php.conf;
   * fastcgi_pass unix:/var/run/php5-fpm.sock;
   * }
-8. Hit ctrl+o and enter to save.
+8. Hit ctrl+x, Y and enter to save and exit.
 
-*mysql*
+**mysql**
 
 1. Run: sudo mysql_install_db
 2. Run: sudo mysql_secure_installation
@@ -83,7 +83,7 @@ Sweet, now we got MYSQL set up. To make sure everything is in order we should ru
 
 We still need chromium to display it though. [Please follow this guide](https://www.raspberrypi.org/forums/viewtopic.php?t=121195).
 
-#h2 Setting up the Djukebox
+## Setting up the Djukebox
 
 1. Run: git clone https://github.com/Jasdoge/Djukebox
 2. This will create a Djukebox folder in your home directory. We'll have to give www-data access to it though.
