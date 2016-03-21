@@ -2,7 +2,7 @@
 
 Here's a quick way of setting things up. There are obviously lots of different ways of doing this, but I'll start with the easiest way possible:
 
-**config.php**
+:pencil2: :dog2: **config.php**
 
 1. Open a terminal and enter: cd /var/www/Djukebox
 2. Enter: sudo nano config.php
@@ -14,8 +14,9 @@ Here's a quick way of setting things up. There are obviously lots of different w
 8. MYSQL_* settings can be changed if you didn't follow the previous guide and name all accounts and passwords to jasdoge.
 9. Hit ctrl+x, Y and enter to save.
 
-The rest can be done through the wonderful use of GUIs. Simply load up chromium on the raspberry pi and enter in the address bar: localhost<br />
-This will take you to a song editor.
+The rest can be done through the wonderful use of GUIs. Simply load up chromium on the raspberry pi and enter in the address bar: localhost
+
+:musical_note: :dog2: **The song editor.**
 
 In the editor you should hit new song. Currently the Djukebox only handles soundcloud URLs. If you want some songs to test with, all [my songs](https://soundcloud.com/jasx) are free to stream. Or why not check out the [doge tracks soundcloud group](https://soundcloud.com/groups/doge-tracks) for much shibe tunes? Once you've picked a song, do the following:
 
@@ -26,7 +27,7 @@ In the editor you should hit new song. Currently the Djukebox only handles sound
 5. Click Done to save that track.
  
 
-### But Mr Jasdoge, I do not have any dogecoin addresses :(
+### :moneybag::dog2: But Mr Jasdoge, I do not have any dogecoin addresses :(
 
 There are multiple ways to get some doge addresses! If you don't want to host a full dogecoin value I suggest using a [dogechain wallet](https://my.dogechain.info), it's what I've been using while testing.
 
