@@ -69,6 +69,26 @@ If you're familiar with linux, you can disregard the monitor/keyboard/mouse if y
    }</pre> 
 10. Hit ctrl+x, Y and enter to save and exit.
 
+Here's roughly what my default file looks like:
+<pre>
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/Djukebox;
+        index index.html index.php index.htm index.nginx-debian.html;
+        server_name jukebox;
+        location / {
+                try_files $uri $uri/ @rewrite;
+        }
+        location @rewrite {
+                rewrite ^/(.*)$ /index.php?q=$1;
+        }
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+        }
+}
+</pre>
 
 **mysql**
 
