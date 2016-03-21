@@ -8,7 +8,7 @@
 * A monitor to display it on. It's designed for 1920x1080 but will work on any size with a bit of CSS fiddling.
 * Some speakers hooked up to the PI.
 
-## :dog2: Wow how Install? :dog2:
+## :dog2: How Install? :dog2:
 
 1. [Installing a Raspberry Pi from scratch](https://github.com/Jasdoge/Djukebox/blob/master/setup_pi.md) (You do not have to invent the universe). 
 2. [Configuring and adding songs to your installation](https://github.com/Jasdoge/Djukebox/blob/master/setup_config.md)
