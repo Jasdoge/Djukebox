@@ -62,7 +62,13 @@ If you're familiar with linux, you can disregard the monitor/keyboard/mouse if y
   * include snippets/fastcgi-php.conf;
   * fastcgi_pass unix:/var/run/php5-fpm.sock;
   * }
-8. Hit ctrl+x, Y and enter to save and exit.
+8. Find location / { and in that section replace the try_files line with: try_files $uri $uri/ @rewrite;
+9. After the closing bracket } of location / add the following block:
+  <pre>location @rewrite {
+          rewrite ^/(.*)$ /index.php?q=$1;
+   }</pre> 
+10. Hit ctrl+x, Y and enter to save and exit.
+
 
 **mysql**
 
