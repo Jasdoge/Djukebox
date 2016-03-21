@@ -101,7 +101,7 @@ server {
 7. Run: CREATE DATABASE jasdoge;
 8. Run: CREATE USER 'jasdoge'@'localhost' IDENTIFIED BY 'jasdoge';
 9. Run: GRANT ALL PRIVILEGES ON jasdoge . * TO 'jasdoge'@'localhost';
-10. Run: FLUSH_PRIVILEGES;
+10. Run: FLUSH PRIVILEGES;
 11. Run: exit
 
 Sweet, now we got MYSQL set up. To make sure everything is in order we should run the following two commands:
