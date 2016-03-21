@@ -1,3 +1,5 @@
+**This is the first release of the tutorial, you will probably notice missing or incorrect data. Please file a support request at the [issues page](https://github.com/Jasdoge/Djukebox/issues) or in [the following reddit thread](https://www.reddit.com/r/dogecoin/comments/4be8aa/%C3%B0jukebox_how_to_install_your_own/) and I'll try to answer your questions as good as I can! 
+
 # :cake::dog2: Setting up your PI
 
 The Djukebox is basically just a website. You can easily host it on any server, I just picked a raspberry PI 3 with raspbian jessie because it was cheap and easy. This first part of the guide will install LEMP (webserver) and clone the Djukebox source code. I'll start this guide as if you have just bought a PI 3, an adaptor and a memory card. We'll start off on your personal desktop computer.
