@@ -2,6 +2,8 @@
 
 The Djukebox is basically just a website. You can easily host it on any server, I just picked a raspberry PI 3 with raspbian jessie because it was cheap and easy. This first part of the guide will install LEMP (webserver) and clone the Djukebox source code. I'll start this guide as if you have just bought a PI 3, an adaptor and a memory card. We'll start off on your personal desktop computer.
 
+You can obviously also use LAMP for this. If you already have/know how to install a webserver you can just clone the Djukebox repo into your webroot and get started on the second guide immediately.
+
 #h2 Preparing the memory card and hardware.
 
 1. I've downloaded the non-lite version of Raspbian Jessie from the raspberry pi's official site here: [https://www.raspberrypi.org/downloads/raspbian/](https://www.raspberrypi.org/downloads/raspbian/)
