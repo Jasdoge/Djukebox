@@ -41,6 +41,6 @@ Now we have a PI with a lamp server. We have the Djukebox installed and we have 
 3. Hit F11 to set it to kiosk mode.
 4. Scan the QR code and give it a try.
 
-:pineapple::tada::dog2: **Hopefully if you set everything up right, your Djukebox should now much much amaze.** 
+:pineapple::tada::dog2: **Hopefully if you set everything up right, your Djukebox should now be much amaze.** 
 
 However, if something is not wow, you should go to the [Issues page](https://github.com/Jasdoge/Djukebox/issues) and file a support request. 
