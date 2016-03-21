@@ -9,4 +9,6 @@ The Ðjukebox is a crypto currency jukebox meant to run in a HTML5-capable brows
 * Some speakers hooked up to the PI.
 
 # Install
-Coming soon
+
+1. [Installing a Raspberry Pi from scratch](https://github.com/Jasdoge/Djukebox/blob/master/setup_pi.md) (You do not have to invent the universe). 
+2. [Configuring and adding songs to your installation](https://github.com/Jasdoge/Djukebox/blob/master/setup_config.md)
