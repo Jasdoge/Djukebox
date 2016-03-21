@@ -1,6 +1,8 @@
 # Djukebox
 :dog2: The Ðjukebox is a crypto currency jukebox meant to run in a HTML5-capable browser in kiosk mode. Perferably a raspberry pi.
 
+**[Watch a YouTube Video explaining what it is!](https://www.youtube.com/watch?v=4nG6K3qzE6g)**
+
 ## Such Prerequisites
 * A webserver with PHP/MySQL (Can be self-contained on a raspi with LAMP or LEMP)
 * A kiosk-mode HTML5 capable browser with MP3 support and an internet connection. (Chromium in my case)
