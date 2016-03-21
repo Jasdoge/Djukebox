@@ -1,4 +1,4 @@
-**This is the first release of the tutorial, you will probably notice missing or incorrect data. Please file a support request at the [issues page](https://github.com/Jasdoge/Djukebox/issues) or in [the following reddit thread](https://www.reddit.com/r/dogecoin/comments/4be8aa/%C3%B0jukebox_how_to_install_your_own/) and I'll try to answer your questions as good as I can! 
+**This is the first release of the tutorial, you will probably notice missing or incorrect data. Please file a support request at the [issues page](https://github.com/Jasdoge/Djukebox/issues) or in [the following reddit thread](https://www.reddit.com/r/dogecoin/comments/4be8aa/%C3%B0jukebox_how_to_install_your_own/) and I'll try to answer your questions as good as I can!**
 
 # :cake::dog2: Setting up your PI
 
