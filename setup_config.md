@@ -29,7 +29,7 @@ In the editor you should hit new song. Currently the Djukebox only handles sound
 
 ### :moneybag::dog2: But Mr Jasdoge, I do not have any dogecoin addresses :(
 
-There are multiple ways to get some doge addresses! If you don't want to host a full dogecoin value I suggest using a [dogechain wallet](https://my.dogechain.info), it's what I've been using while testing.
+There are multiple ways to get some doge addresses! If you don't want to run a full dogecoin desktop wallet I suggest using a [dogechain wallet](https://my.dogechain.info), it's what I've been using while testing.
 
 As for bitcoin/litecoin addresses I don't really know. I suspect there are similar services, but you will just have to use ye oldde google for that.
 
