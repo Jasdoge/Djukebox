@@ -9,6 +9,8 @@ The Djukebox is basically just a website. You can easily host it on any server, 
 3. Add the SD card into the PI, connect the network, monitor, keyboard and mouse.
 4. Connect the power supply and wait for the PI to boot.
 
+If you're familiar with linux, you can disregard the monitor/keyboard/mouse if you can figure out the network ID for the PI and just SSH in with user: pi, password: raspberry.
+
 #h2 Configuring the pi
 
 1. Open a terminal.
