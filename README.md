@@ -14,3 +14,4 @@
 
 1. [Installing a Raspberry Pi from scratch](https://github.com/Jasdoge/Djukebox/blob/master/setup_pi.md) (You do not have to invent the universe). 
 2. [Configuring and adding songs to your installation](https://github.com/Jasdoge/Djukebox/blob/master/setup_config.md)
+3. (Optional) [Installing to a remote machine](https://github.com/Jasdoge/Djukebox/blob/master/setup_config.md)
