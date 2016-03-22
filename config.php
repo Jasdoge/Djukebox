@@ -13,12 +13,15 @@ class Config{
 	
 	static $PDO = NULL; 
 	
-	
-	static $DEBUG = false;					// Enables/Disables non-localhost access to the editor. Make sure this is off in production
-	
-	// Run in folder mode lets you host this on a webserver. For security reasons it's not recommended. But it will work if you don't want to set up the webhost on the same machine that presents the djukebox.
+	// Run in folder mode lets you host this on a webserver. If you don't want to set up the webhost on the same machine that presents the djukebox.
 	static $RUN_IN_FOLDER = false;			// If enabled you have to go to myurl.com/subfolder/?p=player instead of myurl.com/player
-		private static $RUN_IN_FOLDER_PASS = "doge";	// Only used when RUN_IN_FOLDER is TRUE. Set a password here to access the editor and player with through myurl.com/subfolder/?PASS=pass - Required for the editor and player
+	
+	// This is optional and only really makes sense if you need to be able to edit the songs remotely. Accessing the Djukebox from localhost will also have you logged in.
+	// Password is required, you cannot leave it empty.
+	// Lets you log in to the editor and the player by adding ?LOGIN at the end of your URL such as myurl.com/subfolder/?LOGIN
+	// You can log out by going to myurl.com/subfolder/?LOGOUT
+	private static $EDITOR_USER = "doge";
+	private static $EDITOR_PASS = "";
 	
 	static $STORE_NAME = "Shibe Café";				// Store name
 	static $BLOCKIO_DOGE = "ffd0-84c9-5154-91cd";		// BlockIO API key - Doge
@@ -44,14 +47,11 @@ class Config{
 	}
 	
 	static function isLocal(){
-		if(
-			self::$DEBUG || 
-			(
-				self::$RUN_IN_FOLDER && isset($_GET['PASS']) && $_GET['PASS'] === self::$RUN_IN_FOLDER_PASS
-			)
-		)return true;
-		
+		// We have logged in, so we're treated as local
+		if(isset($_SESSION['LOGGED_IN']) && (int)$_SESSION['LOGGED_IN'])return true;
+		// We are not logged in and we're not connecting from localhost.
 		if ($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR']){return false;}
+		// We're connected through localhost
 		return true;
 	}
 	
@@ -92,6 +92,36 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 		if(empty(self::$LIST_ADDRESS) || !is_string(self::$LIST_ADDRESS)){ 
 			self::$LIST_ADDRESS = $_SERVER['SERVER_ADDR'];
 		}
+		
+		// Handle logout
+		if(isset($_GET['LOGOUT']))
+			$_SESSION['LOGGED_IN'] = 0;
+			
+		// Handle login
+		else if(isset($_GET['LOGIN']) && !empty(self::$EDITOR_PASS)){
+			// Check user credentials
+			if(
+				isset($_SERVER['PHP_AUTH_USER']) && 
+				strtolower($_SERVER['PHP_AUTH_USER']) === strtolower(self::$EDITOR_USER) && 
+				$_SERVER['PHP_AUTH_PW'] === self::$EDITOR_PASS
+			){
+				$_SESSION['LOGGED_IN'] = 1;
+				
+			}
+			// Ask to log in
+			else{
+				if(isset($_SERVER['PHP_AUTH_USER'])){
+					echo $_SERVER['PHP_AUTH_USER'].' :: '.$_SERVER['PHP_AUTH_PW']; 
+				}
+				
+				
+				header('WWW-Authenticate: Basic realm="Djukebox Editor Access. Username is doge."');
+				header('HTTP/1.0 401 Unauthorized');
+				echo 'Unable to log in';
+				die();
+			}
+		}
+		
 		
 	}
 	

@@ -12,7 +12,7 @@ class FrontController{
 		$page = strtolower(array_shift(self::$ARGS));
 		
 
-		if(Config::isLocal() || Config::$DEBUG){
+		if(Config::isLocal()){
 			if($page === "player"){
 				include __DIR__.'/controllers/player.php';
 				return;
