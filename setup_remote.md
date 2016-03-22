@@ -2,7 +2,7 @@
 
 If for some reason you don't want to host everything on a single machine you can put a Djukebox installation on a remote webserver and just link to it. I don't recommend doing this due to security reasons.
 
-This will change up the URL syntax a little bit as instead of using mydomain.com/player you'll have to use mydomain.com/jukeboxfolder/?q=player for the player and mydomain.com/jukeboxfolder/?PASS=password for the editor.
+This will change up the URL syntax a little bit as instead of using mydomain.com/player you'll have to use mydomain.com/jukeboxfolder/?q=player for the player.
 
 1. Open up config.php
 2. Find the $RUN_IN_FOLDER line, change it from false to true
