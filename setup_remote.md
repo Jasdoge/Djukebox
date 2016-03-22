@@ -4,6 +4,12 @@ If for some reason you don't want to host everything on a single machine you can
 
 This will change up the URL syntax a little bit as instead of using mydomain.com/player you'll have to use mydomain.com/jukeboxfolder/?q=player for the player.
 
+**Install**
+
+Just drop the contents of the Djukebox folder onto the your web host in any directory where you want it, like /var/www/html/djukebox/.
+
+**Config**
+
 1. Open up config.php
 2. Find the $RUN_IN_FOLDER line, change it from false to true
 3. Find the EDITOR_PASS line, change it from "doge" to whatever password you want to use.
