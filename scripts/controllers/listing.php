@@ -1,6 +1,6 @@
 <script src="https://connect.soundcloud.com/sdk.js"></script>
-<script src="/scripts/class Song.js?"></script>
-<script src="/scripts/class Audio.js?"></script>
+<script src="<?php echo Config::FS(); ?>scripts/class Song.js?"></script>
+<script src="<?php echo Config::FS(); ?>scripts/class Audio.js?"></script>
 <script>
 
 <?php
@@ -185,13 +185,13 @@ $(function(){
 			
 			var html = '<span class="st">'+this.author+' - '+this.title+'</span><br /><br />';
 			if(this.wallet_dogecoin.trim() !== ""){
-				html+= '<a class="payButton doge" href="'+"dogecoin:"+this.wallet_dogecoin+"?amount="+(this.cost_doge > 0 ? this.cost_doge : 50)+"&label="+encodeURIComponent("<?php echo Config::$STORE_NAME; ?> Jukebox :: "+this.author+" - "+this.title)+'"><img src="/media/doge.png" />['+(this.cost_doge > 0 ? this.cost_doge : "ANY")+'] Dogecoin</a><br />'; 
+				html+= '<a class="payButton doge" href="'+"dogecoin:"+this.wallet_dogecoin+"?amount="+(this.cost_doge > 0 ? this.cost_doge : 50)+"&label="+encodeURIComponent("<?php echo Config::$STORE_NAME; ?> Jukebox :: "+this.author+" - "+this.title)+'"><img src="<?php echo Config::FS(); ?>media/doge.png" />['+(this.cost_doge > 0 ? this.cost_doge : "ANY")+'] Dogecoin</a><br />'; 
 			}
 			if(this.wallet_bitcoin.trim() !== ""){
-				html+= '<a class="payButton btc" href="'+"bitcoin:"+this.wallet_bitcoin+"?amount="+(this.cost_btc > 0 ? this.cost_btc : 0.001)+"&label="+encodeURIComponent("<?php echo Config::$STORE_NAME; ?> Jukebox :: "+this.author+" - "+this.title)+'"><img src="/media/btc.png" />['+(this.cost_btc > 0 ? this.cost_btc : "ANY")+'] Bitcoin</a><br />'; 
+				html+= '<a class="payButton btc" href="'+"bitcoin:"+this.wallet_bitcoin+"?amount="+(this.cost_btc > 0 ? this.cost_btc : 0.001)+"&label="+encodeURIComponent("<?php echo Config::$STORE_NAME; ?> Jukebox :: "+this.author+" - "+this.title)+'"><img src="<?php echo Config::FS(); ?>media/btc.png" />['+(this.cost_btc > 0 ? this.cost_btc : "ANY")+'] Bitcoin</a><br />'; 
 			}
 			if(this.wallet_litecoin.trim() !== ""){
-				html+= '<a class="payButton ltc" href="'+"litecoin:"+this.wallet_litecoin+"?amount="+(this.cost_ltc > 0 ? this.cost_ltc : 0.01)+"&label="+encodeURIComponent("<?php echo Config::$STORE_NAME; ?> Jukebox :: "+this.author+" - "+this.title)+'"><img src="/media/ltc.png" />['+(this.cost_ltc > 0 ? this.cost_ltc : "ANY")+'] Litecoin</a><br />'; 
+				html+= '<a class="payButton ltc" href="'+"litecoin:"+this.wallet_litecoin+"?amount="+(this.cost_ltc > 0 ? this.cost_ltc : 0.01)+"&label="+encodeURIComponent("<?php echo Config::$STORE_NAME; ?> Jukebox :: "+this.author+" - "+this.title)+'"><img src="<?php echo Config::FS(); ?>media/ltc.png" />['+(this.cost_ltc > 0 ? this.cost_ltc : "ANY")+'] Litecoin</a><br />'; 
 			}
 			 
 			$("div.editSong", dom).append(html);

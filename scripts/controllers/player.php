@@ -1,9 +1,9 @@
 <script src="https://connect.soundcloud.com/sdk.js"></script>
-<script src="/libraries/jquery.qrcode-0.12.0.min.js"></script>
-<script src="/scripts/class Song.js?"></script>
-<script src="/scripts/class Jukebox.js?"></script>
-<script src="/scripts/class Player.js?"></script>
-<script src="/scripts/class Audio.js?"></script>
+<script src="<?php echo Config::FS(); ?>libraries/jquery.qrcode-0.12.0.min.js"></script>
+<script src="<?php echo Config::FS(); ?>scripts/class Song.js?"></script>
+<script src="<?php echo Config::FS(); ?>scripts/class Jukebox.js?"></script>
+<script src="<?php echo Config::FS(); ?>scripts/class Player.js?"></script>
+<script src="<?php echo Config::FS(); ?>scripts/class Audio.js?"></script>
 
 
 <script>
@@ -31,7 +31,7 @@ $(function(){
 	$("#skipToEnd").click(Player.skipCurrentSongToEnd);
 	$("#testTip").click(function(){
 		
-		Jukebox.setInfoBox("<img src=\"/media/doge.png\" class=\"tipReceived\" /> "+10+" new tips received!");
+		Jukebox.setInfoBox("<img src=\"<?php echo Config::FS(); ?>media/doge.png\" class=\"tipReceived\" /> "+10+" new tips received!");
 		
 	});
 	
@@ -59,7 +59,7 @@ $(function(){
             </div>
             <div class="content"></div>
             
-            <img src="/media/pineapple.png" id="pineapple" />
+            <img src="<?php echo Config::FS(); ?>media/pineapple.png" id="pineapple" />
         </div>
         <div id="songList"></div>
     </div>
