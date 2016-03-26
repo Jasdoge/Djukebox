@@ -1,5 +1,7 @@
 # Configuring your Djukebox
 
+**Update 2016-03-26**: If you run from localhost, the QR code will get the wrong address. Unless you have access to a domain to link it to, you will need to use the full IP in the address bar, like 192.168.0.199. I have updated the guide with how to get your local IP.
+
 Here's a quick way of setting things up. There are obviously lots of different ways of doing this, but I'll start with the easiest way possible:
 
 :pencil2: :dog2: **config.php**
@@ -14,7 +16,26 @@ Here's a quick way of setting things up. There are obviously lots of different w
 8. MYSQL_* settings can be changed if you didn't follow the previous guide and name all accounts and passwords to jasdoge.
 9. Hit ctrl+x, Y and enter to save.
 
-The rest can be done through the wonderful use of GUIs. Simply load up chromium on the raspberry pi and enter in the address bar: localhost
+We need a way to let the server know it's local IP. Both guides require you to figure out your local IP address:
+
+1. Open up a terminal.
+2. Run: ifconfig
+3. Find your inet addr. It should look like: 192.168.*.*
+
+Method 1:
+
+1. Load up chromium on the raspberry pi and enter the full address you just found. (Ex: 192.168.0.199)
+2. You should now have access to the song editor.
+
+Method 2:
+
+1. Edit config.php again.
+2. Find static $LIST_ADDRESS = "";
+3. Set the value to the IP address, ex: static $LIST_ADDRESS = "192.168.0.199";
+4. (Optional) If you know how to configure DNS settings for a domain, this is where you set the domain name instead such as jukebox.shibe.digital
+5. You can now visit either the local IP such as 192.168.0.199 OR just type localhost in the address bar.
+
+The rest can be done through the wonderful use of GUIs.
 
 :musical_note: :dog2: **The song editor.**
 
@@ -38,7 +59,7 @@ As for bitcoin/litecoin addresses I don't really know. I suspect there are simil
 Now we have a PI with a lamp server. We have the Djukebox installed and we have added some songs. We have even made some fresh doge addresses just for our Djukebox. It's time to make some magic!
 
 1. Open up chromium on your pi (or whatever computer you're hosting the Djukebox off of).
-2. Enter the url: localhost/player
+2. Enter the url: 192.168.x.x/player - Replace the Xes with whatever you got from ifconfig previously in the guide.
 3. Hit F11 to set it to kiosk mode.
 4. Scan the QR code and give it a try.
 
